@@ -1,5 +1,11 @@
 # @vdustr/template-aio-ts-lib
 
+## 1.0.2
+
+### Patch Changes
+
+- a46eeba: Run lint scripts sequentially with explicit order (cspell → eslint → oxfmt) and fix lint-staged oxfmt for unsupported file types
+
 ## 1.0.1
 
 ### Patch Changes
