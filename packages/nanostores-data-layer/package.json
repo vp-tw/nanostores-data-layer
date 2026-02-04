@@ -1,6 +1,6 @@
 {
   "name": "@vp-tw/nanostores-data-layer",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "A nanostores adapter for Google Tag Manager dataLayer",
   "keywords": [
     "analytics",
