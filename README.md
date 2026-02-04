@@ -16,54 +16,55 @@ yarn add @vp-tw/nanostores-data-layer nanostores
 
 ### Processing All Events (Including Past)
 
-Use `subscribe()` to get the complete dataLayer immediately and on every change:
+Use `subscribe()` when you need to process events that were pushed **before** your code runs (e.g., GTM tags that fire on page load). The callback is executed **immediately** upon subscription:
 
 ```typescript
 import { $dataLayer } from "@vp-tw/nanostores-data-layer";
 
-// Called immediately with current value, then on every change
+// Events already in dataLayer (e.g., pushed by GTM before your code runs)
+window.dataLayer.push({ event: "gtm.js" });
+window.dataLayer.push({ event: "page_view", page_path: "/home" });
+
+// Callback runs IMMEDIATELY (even before any new push)
 const unsubscribe = $dataLayer.subscribe((events, oldEvents) => {
-  // Get newly added events
   const newEvents = events.slice(oldEvents?.length ?? 0);
-
-  console.log("All events:", events);
-  console.log("New events:", newEvents);
+  newEvents.forEach((event) => {
+    console.log("Event:", event);
+  });
 });
+// Console: Event: { event: 'gtm.js' }           ← immediately!
+// Console: Event: { event: 'page_view', ... }  ← immediately!
 
-window.dataLayer.push({ event: "page_view" });
-// Console: All events: [{ event: 'page_view' }]
-// Console: New events: [{ event: 'page_view' }]
-
+// Future pushes also trigger the callback
 window.dataLayer.push({ event: "click" });
-// Console: All events: [{ event: 'page_view' }, { event: 'click' }]
-// Console: New events: [{ event: 'click' }]
+// Console: Event: { event: 'click' }
 
 unsubscribe();
 ```
 
 ### Processing Only New Events
 
-Use `listen()` to react only when new events are pushed:
+Use `listen()` when you only care about **future** events. The callback is **not** executed immediately—it only fires when new events are pushed:
 
 ```typescript
 import { $dataLayer } from "@vp-tw/nanostores-data-layer";
 
-// Only called on changes, not immediately
+// Events already in dataLayer
+window.dataLayer.push({ event: "gtm.js" });
+window.dataLayer.push({ event: "page_view", page_path: "/home" });
+
+// Callback does NOT run immediately
 const unlisten = $dataLayer.listen((events, oldEvents) => {
-  // Find newly added events
   const newEvents = events.slice(oldEvents?.length ?? 0);
   newEvents.forEach((event) => {
-    console.log("New event:", event);
-    // Process each new event (e.g., send to analytics)
+    console.log("Event:", event);
   });
 });
+// (no output)
 
-window.dataLayer.push({ event: "page_view" });
-// Console: New event: { event: 'page_view' }
-
-window.dataLayer.push({ event: "click" }, { event: "scroll" });
-// Console: New event: { event: 'click' }
-// Console: New event: { event: 'scroll' }
+// Only future pushes trigger the callback
+window.dataLayer.push({ event: "click" });
+// Console: Event: { event: 'click' }
 
 unlisten();
 ```

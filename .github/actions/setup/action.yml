@@ -13,3 +13,7 @@ runs:
     - name: Install dependencies
       shell: bash
       run: pnpm install
+    - name: Install Playwright browsers
+      # Required for vitest browser tests
+      shell: bash
+      run: pnpm exec playwright install chromium
