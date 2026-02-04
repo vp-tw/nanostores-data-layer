@@ -1,0 +1,46 @@
+catalog:
+  "@antfu/eslint-config": ^7.2.0
+  "@changesets/cli": ^2.29.8
+  "@commitlint/cli": ^20.3.1
+  "@commitlint/config-conventional": ^20.3.1
+  "@commitlint/types": ^20.3.1
+  "@total-typescript/ts-reset": ^0.6.1
+  "@types/fs-extra": ^11.0.4
+  "@types/lint-staged": ^14.0.0
+  "@typescript/native-preview": 7.0.0-dev.20260128.1
+  "@typescript-eslint/utils": ^8.54.0
+  "@vitest/browser-playwright": ^4.0.18
+  "@vp-tw/eslint-config": ^1.0.5
+  "@vp-tw/tsconfig": ^4.0.0
+  commitizen: ^4.3.1
+  cspell: ^9.6.2
+  eslint: ^9.39.2
+  eslint-config-prettier: ^10.1.8
+  eslint-plugin-package-json: ^0.88.2
+  fast-glob: ^3.3.3
+  fs-extra: ^11.3.3
+  husky: ^9.1.7
+  jiti: ^2.6.1
+  lint-staged: ^16.2.7
+  nanostores: ^1.1.0
+  npm-run-all2: ^8.0.4
+  oxfmt: ^0.27.0
+  pathe: ^2.0.3
+  playwright: ^1.58.0
+  tsdown: ^0.12.5
+  tsx: ^4.21.0
+  typescript: ^5.9.3
+  vitest: ^4.0.18
+catalogMode: strict
+
+onlyBuiltDependencies:
+  - esbuild
+  - unrs-resolver
+packages:
+  - packages/*
+
+publicHoistPattern:
+  - "@tsconfig/*"
+shellEmulator: true
+
+trustPolicy: no-downgrade

@@ -1,0 +1,11 @@
+{
+  "name": "@repo/tsconfig",
+  "version": "1.0.1",
+  "private": true,
+  "description": "Shared TypeScript configuration",
+  "type": "module",
+  "exports": {
+    "./tsconfig.app": "./tsconfig.app.json",
+    "./tsconfig.node": "./tsconfig.node.json"
+  }
+}

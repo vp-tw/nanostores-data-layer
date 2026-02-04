@@ -1,0 +1,9 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./packages/utils/tsconfig.app.json" },
+    { "path": "./packages/nanostores-data-layer/tsconfig.lib.json" },
+    { "path": "./packages/nanostores-data-layer/tsconfig.node.json" }
+  ]
+}

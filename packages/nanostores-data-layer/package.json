@@ -1,0 +1,37 @@
+{
+  "name": "@vp-tw/nanostores-data-layer",
+  "version": "0.0.1",
+  "description": "A nanostores adapter for Google Tag Manager dataLayer",
+  "keywords": [
+    "analytics",
+    "datalayer",
+    "google-tag-manager",
+    "gtm",
+    "nanostores"
+  ],
+  "license": "MIT",
+  "author": "ViPro <vdustr@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vp-tw/nanostores-data-layer"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "prepublishOnly": "cp ../../README.md ./README.md && pnpm run build"
+  },
+  "devDependencies": {
+    "@vitest/browser-playwright": "catalog:",
+    "nanostores": "catalog:",
+    "tsdown": "catalog:",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "nanostores": ">=1.0.0"
+  }
+}
