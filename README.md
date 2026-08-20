@@ -192,4 +192,4 @@ const events = $dataLayer.get() as DataLayer<MyEvent>;
 
 [MIT](https://github.com/vp-tw/nanostores-data-layer/blob/main/LICENSE)
 
-Copyright (c) 2026 ViPro <vdustr@gmail.com> (<https://vdustr.dev>)
+Copyright (c) 2026 ViPro <vdustr@gmail.com> (<https://vdustr.github.io>)
